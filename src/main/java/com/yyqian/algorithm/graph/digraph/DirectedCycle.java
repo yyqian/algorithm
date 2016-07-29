@@ -5,11 +5,11 @@ import java.util.Deque;
 
 /**
  * Created by yyqian on 5/30/16.
- *
+ * <p>
  * Page 576
- *
+ * <p>
  * 这个对象用来判断 digraph 是否有环
- *
+ * <p>
  * 这里面最关键的是用一个 stack 来缓存单次 dfs 途经的节点, 如果探索到的节点出现在 stack 上面
  * 表明有 cycle。在单次 dfs 退出时, 要清空 stack, 这样下次 dfs 的时候 stack 就是空的（都是 false）
  */
@@ -24,7 +24,7 @@ public class DirectedCycle {
     edgeTo = new int[G.V()];
     marked = new boolean[G.V()];
     for (int v = 0; v < G.V(); v++) {
-      if(!marked[v]) {
+      if (!marked[v]) {
         dfs(G, v);
       }
     }
@@ -39,8 +39,7 @@ public class DirectedCycle {
       else if (!marked[w]) {
         edgeTo[w] = v;
         dfs(G, v);
-      }
-      else if (onStack[w]) {
+      } else if (onStack[w]) {
         // 这个时候已经找到了 cycle 的一个节点: v->w
         // 我们从 v 向后推, 直到 w, 然后单独 push w 和 v, 构成一个环
         cycle = new ArrayDeque<>();
