@@ -34,7 +34,7 @@ public class Merge extends AbstractSort {
    */
   public static void sort(Comparable[] a, int lo, int hi) {
     if (hi <= lo) return; // hi = lo 的情况会发生, 这个时候就一个元素, 不需要排序。hi < lo 实际上应该不会发生
-    int mid = (lo + hi) / 2;
+    int mid = lo + (hi - lo) / 2;
     sort(a, lo, mid); // 分治法, 分成两个数组来排序, 这个函数返回的时候, a[lo ... mid] 应当是排序完毕的
     sort(a, mid + 1, hi); // 返回时 a[mid+1 ... hi] 应当已经排序完毕
     merge(a, lo, mid, hi); // 合并两个已经排序完毕的数组
@@ -62,9 +62,7 @@ public class Merge extends AbstractSort {
   public static void merge(Comparable[] a, int lo, int mid, int hi) {
     int i = lo; // 这个指针指向左边的排好的数组
     int j = mid + 1; // 这个指针指向右边的排好的数组
-    for (int k = lo; k <= hi; k++) {
-      aux[k] = a[k]; // 我们需要一份数据 copy, 因为下面会重新填充数组 a
-    }
+    System.arraycopy(a, lo, aux, lo, hi + 1 - lo);
     // 用 aux 作为原始数据, 重新挨个填充 a
     for (int k = lo; k <= hi; k++) {
       if (i > mid) a[k] = aux[j++]; // 特殊情况: 左边的指针已经溢出, 说明左边的数据已经全部插入到数组 a 中了, 接下来就可以插入所有的右边的数据了

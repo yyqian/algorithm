@@ -31,13 +31,11 @@ public class LSD {
         count[r + 1] += count[r];
       }
       // 排序: 把数组 a 中的值放到 aux 数组中正确的位置
-      for (int i = 0; i < N; i++) {
-        aux[count[a[i].charAt(d)]++] = a[i];
+      for (String s : a) {
+        aux[count[s.charAt(d)]++] = s;
       }
       // 把 aux 数组的值再赋值回 a 数组
-      for (int i = 0; i < N; i++) {
-        a[i] = aux[i];
-      }
+      System.arraycopy(aux, 0, a, 0, N);
     }
   }
 
