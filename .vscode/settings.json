@@ -1,0 +1,12 @@
+{
+  "C_Cpp.clang_format_style": "Google",
+  "C_Cpp.autoAddFileAssociations": false,
+  "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [
+    80
+  ],
+  "editor.formatOnSave": true,
+  "editor.detectIndentation": false
+}
