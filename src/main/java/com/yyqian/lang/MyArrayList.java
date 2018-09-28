@@ -16,7 +16,7 @@ public class MyArrayList<T> {
         if (size == data.length) {
             System.out.println("grow from " + size + " to " + size * 2);
             Object[] copyData = new Object[size * 2];
-            System.arraycopy(data, 0, copyData, 0, size);
+            System.arraycopy(data, 0, copyData, 0, size); // grow capacity
             data = copyData;
         }
         data[size++] = e;
@@ -26,8 +26,8 @@ public class MyArrayList<T> {
     @SuppressWarnings("unchecked")
     public T remove(int index) {
         T old = (T)data[index];
-        System.arraycopy(data, index + 1, data, index, size - index - 1);
-        data[--size] = null;
+        System.arraycopy(data, index + 1, data, index, size - index - 1); // left shift
+        data[--size] = null; // release resource
         return old;
     }
 
