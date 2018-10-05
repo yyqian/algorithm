@@ -3,7 +3,6 @@ import java.lang.management.ManagementFactory;
 
 public class Main {
     public static void main(String args[]) {
-        System.loadLibrary("ocr");
         System.out.println("Java process.id: " + ManagementFactory.getRuntimeMXBean().getName().split("@")[0]);
         System.out.println("Java thread.id: " + Thread.currentThread().getId());
         System.out.println("Java thread.name: " + Thread.currentThread().getName());

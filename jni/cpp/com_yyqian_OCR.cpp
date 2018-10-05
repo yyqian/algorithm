@@ -7,14 +7,13 @@
 
 using namespace std;
 
-int ocr(const char* path, string &res) {
+void ocr(const char* path, string &res) {
     ostringstream oss;
     oss << '[' << getpid() << ']';
     oss << '[' << pthread_self() << ']';
     oss << '[' << path << ']';
-    oss << "{\"apno\":\"CN201338923.X\"}";
+    oss << "{\"status\":0,\"apno\":\"CN201338923.X\"}";
     res = oss.str();
-    return 0;
 }
 
 JNIEXPORT jstring JNICALL Java_com_yyqian_OCR_parse (JNIEnv *env, jobject obj, jstring path_id) {
